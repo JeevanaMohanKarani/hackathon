@@ -15,11 +15,10 @@ Times are hackathon elapsed time (0:00 = start). Move tasks between sections; ke
 | **3:00** | **Submit** |
 
 ## Todo
-- [ ] Adapt idea to problem statement, update CONTEXT.md | Both | 0:00-0:20
 - [ ] Repo init, `.gitignore`, `.env.example`, `requirements.txt` | Jothik | 0:20-0:40
 - [ ] Streamlit skeleton `app.py` with log panel per agent | Jeevana | 0:20-0:40
 - [ ] `llm.py`: Gemini + Groq client wrappers (shared) | Jothik | 0:40-1:00
-- [ ] SQLite memory: `user_facts`, `history` | Jothik | 0:40-1:00
+- [ ] SQLite memory: `user_facts`, `history`, `tasks` | Jothik | 0:40-1:00
 - [ ] Planner -> Executor (tools) -> Critic loop, max 2 retries if score < 7 | Jothik | 1:00-1:30
 - [ ] Mic input + Groq whisper-large-v3 STT | Jeevana | 0:40-1:10
 - [ ] Spoken replies with browser speechSynthesis | Jeevana | 1:10-1:30
@@ -31,8 +30,9 @@ Times are hackathon elapsed time (0:00 = start). Move tasks between sections; ke
 - [ ] Submit (checklist in DEMO.md) | Both | 2:50-3:00
 
 ## Doing
-- (none)
+- [ ] Setup core environment: `.env.example`, `requirements.txt`, `llm.py`, `memory.py` | Both | 0:20-0:40
 
 ## Done
+- [x] Adapt idea to problem statement, update CONTEXT.md (Voice-to-Task Assistant) | Both | 0:00-0:20
 - [x] Team coordination files created | Jothik | pre-hackathon
 - [x] Create GitHub repo + add Jothik1506-ai as collaborator; post URL in COMMS.md | Jeevana | before 0:00 (repo: https://github.com/JeevanaMohanKarani/hackathon; Jothik1506-ai confirmed as collaborator 2026-10-04)

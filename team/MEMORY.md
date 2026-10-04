@@ -9,6 +9,9 @@ Why: <one line>
 ```
 
 ## Entries
+ 
+### 2026-10-04 10:31 | Both | Confirmed problem statement: Voice-to-Task Assistant
+Why: Perfect fit for Nova's voice STT -> multi-agent planner/executor/critic -> SQLite memory -> TTS pipeline; naturally showcases agency, reflection, voice, and persistent memory.
 
 ### 2026-10-04 00:17 | Antigravity | Git author and credentials locked to Jothik1506-ai
 Why: ensures all commits and pushes are authored and authenticated exclusively as Jothik1506-ai (vanamjothik@gmail.com).
