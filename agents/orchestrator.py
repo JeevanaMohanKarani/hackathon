@@ -1,5 +1,5 @@
 """
-agents/orchestrator.py - Multi-agent coordinator for Nova.
+agents/orchestrator.py - Multi-agent coordinator for VoxFlow.
 Orchestrates Planner -> Executor -> Critic (with automated retry loop) -> SQLite Memory -> TTS response.
 """
 

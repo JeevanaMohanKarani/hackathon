@@ -1,5 +1,5 @@
 """
-agents/critic.py - Critic Agent (Self-Reflection & Quality Scoring) for Nova.
+agents/critic.py - Critic Agent (Self-Reflection & Quality Scoring) for VoxFlow.
 Evaluates the plan and execution against the user's initial spoken request, scoring from 1 to 10.
 If the score is < 7, provides constructive feedback to trigger a refinement retry.
 """
@@ -9,7 +9,7 @@ import re
 from typing import Dict, Any
 import llm
 
-CRITIC_SYSTEM_PROMPT = """You are the Critic Agent for Nova, an autonomous Voice-to-Task assistant.
+CRITIC_SYSTEM_PROMPT = """You are the Critic Agent for VoxFlow, an autonomous Voice-to-Task assistant.
 Your job is to objectively evaluate how accurately the Planner and Executor handled the user's spoken request.
 
 Criteria to score (1 to 10):

@@ -1,5 +1,5 @@
 """
-agents/executor.py - Executor Agent for Nova Voice-to-Task Assistant.
+agents/executor.py - Executor Agent for VoxFlow Voice-to-Task Assistant.
 Takes the tool calls planned by the Planner Agent, safely executes them, and logs the output.
 """
 

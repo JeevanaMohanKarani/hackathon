@@ -1,5 +1,5 @@
 """
-tools.py - Actionable execution tools for Nova Voice-to-Task Assistant.
+tools.py - Actionable execution tools for VoxFlow Voice-to-Task Assistant.
 Provides deterministic tool functions that agents can invoke.
 """
 

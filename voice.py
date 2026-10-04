@@ -1,5 +1,5 @@
 """
-voice.py - Voice STT and TTS utilities for Nova.
+voice.py - Voice STT and TTS utilities for VoxFlow.
 Provides Groq Whisper STT (whisper-large-v3) and browser/audio TTS helpers.
 """
 

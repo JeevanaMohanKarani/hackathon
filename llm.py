@@ -1,5 +1,5 @@
 """
-llm.py - Multi-provider LLM connector supporting NVIDIA NIM (meta/llama-3.2-11b-vision-instruct), Gemini, Groq, and resilient local fallback.
+llm.py - Multi-provider LLM connector supporting NVIDIA NIM (Meta Llama), Gemini, Groq, and resilient local fallback.
 """
 
 import os

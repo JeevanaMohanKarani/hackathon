@@ -1,6 +1,6 @@
 """
-agents/planner.py - Planner Agent for Nova Voice-to-Task Assistant.
-Uses Gemini / Groq to analyze voice input, query persistent memory, and decompose into actionable steps.
+agents/planner.py - Planner Agent for VoxFlow Voice-to-Task Assistant.
+Uses Meta Llama (NVIDIA NIM) / Gemini to analyze voice input, query persistent memory, and decompose into actionable steps.
 """
 
 import json
@@ -9,7 +9,7 @@ from typing import Dict, Any, List
 import memory
 import llm
 
-PLANNER_SYSTEM_PROMPT = """You are the Planner Agent for Nova, an autonomous Voice-to-Task assistant.
+PLANNER_SYSTEM_PROMPT = """You are the Planner Agent for VoxFlow, an autonomous Voice-to-Task assistant.
 Your goal is to parse natural, spoken voice instructions and convert them into structured, actionable tasks, reminders, or memory updates.
 
 You have access to the user's persistent memory (profile, habits, timezone, past context).

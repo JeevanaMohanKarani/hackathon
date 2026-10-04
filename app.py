@@ -14,7 +14,7 @@ import voice
 
 # Page configuration
 st.set_page_config(
-    page_title="Nova | Voice-to-Task Autonomous Assistant",
+    page_title="VoxFlow | Voice-to-Task Autonomous Assistant",
     page_icon="🎙️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -155,15 +155,15 @@ if "voice_processed" not in st.session_state:
 
 # --- Sidebar: System Status & Persistent Memory ---
 with st.sidebar:
-    st.markdown("### 🎙️ **Nova Control Center**")
+    st.markdown("### 🎙️ **VoxFlow Control Center**")
     st.caption("Autonomous Voice-to-Task Multi-Agent System")
     
     st.markdown("---")
     st.markdown("#### ⚡ **Active Agents & Pipeline**")
     st.markdown("""
-    - 🟣 **Planner**: Gemini 2.0 Flash
-    - 🔵 **Executor**: Groq Llama-3.3 + Tools
-    - 🟡 **Critic**: Reflection & Scoring (1-10)
+    - 🟣 **Planner**: Meta Llama-3.2 (NVIDIA NIM) / Gemini
+    - 🔵 **Executor**: Multi-Tool Task Engine
+    - 🟡 **Critic**: Reflection & Quality Scoring (1-10)
     - 🟢 **Memory**: SQLite Persistent Engine
     - 🎙️ **Voice**: Groq Whisper-large-v3
     """)
@@ -201,7 +201,7 @@ st.markdown("""
 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
     <div>
         <h1 style="margin: 0; font-size: 2.2rem; font-weight: 800; background: linear-gradient(135deg, #6366F1 0%, #A855F7 50%, #EC4899 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-            Nova Voice-to-Task
+            VoxFlow Voice-to-Task
         </h1>
         <p style="margin: 4px 0 0 0; color: #9CA3AF; font-size: 1rem;">
             Spoken requests $\\to$ Self-Reflecting Autonomous Agent Pipeline $\\to$ Persistent Task Engine
@@ -221,7 +221,7 @@ with tabs[0]:
     col_mic, col_sample = st.columns([1.2, 1])
     
     with col_mic:
-        st.markdown("#### 🎙️ **Speak to Nova**")
+        st.markdown("#### 🎙️ **Speak to VoxFlow**")
         st.caption("Record voice command directly from your browser microphone:")
         
         # Audio input widget (Streamlit 1.40+)
@@ -237,7 +237,7 @@ with tabs[0]:
                 
         if st.session_state.transcribed_text:
             st.info(f"🎙️ **Transcribed Voice**: *\"{st.session_state.transcribed_text}\"*")
-            if st.button("🚀 Process with Nova Multi-Agent Loop", type="primary", use_container_width=True):
+            if st.button("🚀 Process with VoxFlow Multi-Agent Loop", type="primary", use_container_width=True):
                 with st.spinner("🤖 Autonomous agents planning, executing, and critiquing..."):
                     res = run_pipeline(st.session_state.transcribed_text)
                     st.session_state.last_pipeline_result = res
@@ -284,7 +284,7 @@ if st.session_state.last_pipeline_result:
     <div class="glass-card" style="border-left: 4px solid #10B981;">
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div>
-                <span class="agent-badge badge-memory">🔊 NOVA SPOKEN REPLY</span>
+                <span class="agent-badge badge-memory">🔊 VOXFLOW SPOKEN REPLY</span>
                 <h4 style="margin: 8px 0 0 0; color: #E5E7EB;">"{spoken_text}"</h4>
             </div>
             <div style="text-align: right;">

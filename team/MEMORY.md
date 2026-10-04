@@ -10,6 +10,9 @@ Why: <one line>
 
 ## Entries
  
+### 2026-10-04 11:49 | Both | Rebranded project name to VoxFlow
+Why: Renamed from Nova to VoxFlow ("VoxFlow: Voice-to-Task Autonomous Assistant") across UI, agents, prompts, and documentation.
+
 ### 2026-10-04 11:25 | Both | Configured live NVIDIA NIM Meta Llama model
 Why: Integrated NVIDIA NIM API endpoint for Meta Llama with 10/10 Critic score on live multi-agent task planning and execution.
 

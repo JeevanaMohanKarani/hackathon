@@ -1,5 +1,5 @@
 """
-memory.py - Persistent Memory Layer for Nova Voice-to-Task Assistant.
+memory.py - Persistent Memory Layer for VoxFlow Voice-to-Task Assistant.
 Uses SQLite for persistent storage of user facts, tasks, and multi-agent execution history.
 """
 

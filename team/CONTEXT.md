@@ -9,19 +9,19 @@
 ## Problem statement
 > **Voice-to-Task Assistant**: An intelligent voice-first agentic system that transforms spoken requests into structured, actionable, and self-improving tasks with persistent memory and multi-agent validation.
 
-How Nova maps to it:
+How VoxFlow maps to it:
 - **Voice STT**: Mic input captured and transcribed via Groq Whisper (`whisper-large-v3`).
 - **Memory Layer**: SQLite persistent memory for storing user facts, recurring tasks, task states, context history, and follow-ups.
 - **Multi-Agent Core**:
-  - **Planner Agent (Gemini)**: Deconstructs voice commands, identifies user intent, checks previous memory/context, and formulates step-by-step task plans.
-  - **Executor Agent (Groq / Gemini + Tools)**: Executes task actions, queries external APIs/tools, manages calendar/reminders/todos.
+  - **Planner Agent (Meta Llama / Gemini)**: Deconstructs voice commands, identifies user intent, checks previous memory/context, and formulates step-by-step task plans.
+  - **Executor Agent (Multi-Tool Engine)**: Executes task actions, queries external APIs/tools, manages calendar/reminders/todos.
   - **Critic Agent (Reflection & Scoring)**: Evaluates the execution quality (score 1-10), reviews criteria compliance, and triggers automated retries (max 2) if score < 7.
 - **Voice TTS**: Browser `speechSynthesis` / audio output speaking concise status updates and conversational confirmations.
 - **Live Agent UI**: Streamlit dashboard with real-time agent chain breakdown, task cards, and memory inspector.
 
-## Idea: Nova (Voice-to-Task Assistant)
+## Idea: VoxFlow (Voice-to-Task Assistant)
 Voice-first, multi-agent assistant with memory.
-**Pitch:** "Talk to Nova. A planner, an executor and a critic work together, check their own work, and remember you."
+**Pitch:** "Talk to VoxFlow. A planner, an executor and a critic work together, check their own work, and remember you."
 
 ## Architecture
 ```
