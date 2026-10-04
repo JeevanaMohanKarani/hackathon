@@ -288,7 +288,8 @@ if st.session_state.last_pipeline_result:
                 <h4 style="margin: 8px 0 0 0; color: #E5E7EB;">"{spoken_text}"</h4>
             </div>
             <div style="text-align: right;">
-                <span style="font-size: 0.8rem; color: #9CA3AF;">Saved to DB ID #{res.get('history_id', '-')}</span>
+                <span style="font-size: 0.85rem; color: #10B981; font-weight: 600;">💾 Saved to SQLite DB (Log #{res.get('history_id', '-')})</span><br>
+                <span style="font-size: 0.75rem; color: #9CA3AF;">👉 View under <b>'📋 Task Board'</b> tab above</span>
             </div>
         </div>
     </div>
