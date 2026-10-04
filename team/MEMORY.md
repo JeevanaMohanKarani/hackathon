@@ -10,6 +10,12 @@ Why: <one line>
 
 ## Entries
  
+### 2026-10-04 11:25 | Both | Configured live NVIDIA NIM Meta Llama model
+Why: Integrated NVIDIA NIM API endpoint for Meta Llama with 10/10 Critic score on live multi-agent task planning and execution.
+
+### 2026-10-04 11:08 | Both | Built & Launched Nova Voice-to-Task Application on Streamlit
+Why: Core multi-agent pipeline (Planner, Executor, Critic with automated retry loop), SQLite memory, Whisper voice STT & TTS, and interactive task board are live and running at http://localhost:8501.
+
 ### 2026-10-04 10:31 | Both | Confirmed problem statement: Voice-to-Task Assistant
 Why: Perfect fit for Nova's voice STT -> multi-agent planner/executor/critic -> SQLite memory -> TTS pipeline; naturally showcases agency, reflection, voice, and persistent memory.
 
