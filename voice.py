@@ -1,9 +1,10 @@
 """
-voice.py - Voice STT and TTS utilities for VoxFlow.
-Provides Groq Whisper STT (whisper-large-v3) and browser/audio TTS helpers.
+voice.py - Real-time Voice STT and TTS utilities for VoxFlow.
+Uses Google Speech Recognition (free, universal, no key needed), Groq Whisper, and browser TTS.
 """
 
 import os
+import io
 import tempfile
 from typing import Optional
 from dotenv import load_dotenv
@@ -13,10 +14,24 @@ GROQ_API_KEY = os.getenv("GROQ_API_KEY", "").strip()
 
 
 def transcribe_audio_bytes(audio_bytes: bytes, filename: str = "input.wav") -> str:
-    """Transcribes raw audio bytes using Groq Whisper API or fallback."""
-    if not audio_bytes:
+    """Transcribes raw audio bytes using SpeechRecognition (Google STT) or Groq Whisper."""
+    if not audio_bytes or len(audio_bytes) < 100:
         return ""
 
+    # Option 1: SpeechRecognition (Google STT - Universal, real-time, free)
+    try:
+        import speech_recognition as sr
+        r = sr.Recognizer()
+        with sr.AudioFile(io.BytesIO(audio_bytes)) as source:
+            r.adjust_for_ambient_noise(source, duration=0.2)
+            audio_data = r.record(source)
+            text = r.recognize_google(audio_data)
+            if text and text.strip():
+                return text.strip()
+    except Exception as e:
+        print(f"[SpeechRecognition STT info]: {e}")
+
+    # Option 2: Groq Whisper API (if GROQ_API_KEY is configured)
     if GROQ_API_KEY:
         try:
             from groq import Groq
@@ -39,19 +54,20 @@ def transcribe_audio_bytes(audio_bytes: bytes, filename: str = "input.wav") -> s
             except Exception:
                 pass
 
-            if isinstance(transcription, str):
+            if isinstance(transcription, str) and transcription.strip():
                 return transcription.strip()
-            elif hasattr(transcription, "text"):
+            elif hasattr(transcription, "text") and transcription.text.strip():
                 return transcription.text.strip()
         except Exception as e:
             print(f"[Groq Whisper Error]: {e}")
 
-    return "Schedule a project architecture review with the core team for 3 PM today and mark it as high priority"
+    # If audio was empty or unrecognized, return empty so the UI allows manual edit/prompt
+    return ""
 
 
 def get_browser_tts_html(text: str) -> str:
     """Returns an embedded HTML snippet that triggers browser SpeechSynthesis for instant spoken playback."""
-    clean_text = text.replace('"', '\\"').replace("\n", " ")
+    clean_text = text.replace('"', '\\"').replace("\n", " ").replace("'", "\\'")
     return f"""
     <script>
         (function() {{

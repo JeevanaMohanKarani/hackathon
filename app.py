@@ -225,23 +225,40 @@ with tabs[0]:
         st.caption("Record voice command directly from your browser microphone:")
         
         # Audio input widget (Streamlit 1.40+)
-        audio_value = st.audio_input("Record your instruction", key="mic_input")
+        audio_value = st.audio_input("Record your voice command", key="mic_input")
         
         if audio_value is not None:
             audio_bytes = audio_value.read()
-            if audio_bytes and not st.session_state.voice_processed:
-                with st.spinner("🎧 Transcribing with Groq Whisper-large-v3..."):
+            if audio_bytes and len(audio_bytes) > 0:
+                with st.spinner("🎧 Transcribing your voice in real-time..."):
                     transcription = voice.transcribe_audio_bytes(audio_bytes)
-                    st.session_state.transcribed_text = transcription
-                    st.session_state.voice_processed = True
-                
-        if st.session_state.transcribed_text:
-            st.info(f"🎙️ **Transcribed Voice**: *\"{st.session_state.transcribed_text}\"*")
-            if st.button("🚀 Process with VoxFlow Multi-Agent Loop", type="primary", use_container_width=True):
+                    if transcription:
+                        st.session_state.transcribed_text = transcription
+                    elif not st.session_state.transcribed_text:
+                        st.warning("⚠️ No clear speech detected from recording. Please speak closer to the mic or type below.")
+        
+        # Editable Transcribed Voice Input Box
+        user_voice_prompt = st.text_area(
+            "📝 Transcribed Voice Command (Live Editable):",
+            value=st.session_state.transcribed_text,
+            placeholder="Your spoken words will appear here. You can also edit or type directly...",
+            height=100,
+            key="voice_text_box"
+        )
+        
+        if user_voice_prompt:
+            st.session_state.transcribed_text = user_voice_prompt
+            
+        col_run, col_clear = st.columns([2, 1])
+        with col_run:
+            if st.button("🚀 Process with VoxFlow Multi-Agent Loop", type="primary", use_container_width=True, disabled=not bool(st.session_state.transcribed_text)):
                 with st.spinner("🤖 Autonomous agents planning, executing, and critiquing..."):
                     res = run_pipeline(st.session_state.transcribed_text)
                     st.session_state.last_pipeline_result = res
-                    st.session_state.voice_processed = False
+                st.rerun()
+        with col_clear:
+            if st.button("🔄 Clear Input", use_container_width=True):
+                st.session_state.transcribed_text = ""
                 st.rerun()
 
     with col_sample:
@@ -257,6 +274,7 @@ with tabs[0]:
         
         for p in prompts:
             if st.button(f"🗣️ \"{p}\"", use_container_width=True):
+                st.session_state.transcribed_text = p
                 with st.spinner("Running agent loop..."):
                     res = run_pipeline(p)
                     st.session_state.last_pipeline_result = res
